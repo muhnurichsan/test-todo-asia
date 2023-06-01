@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render component and match snapshot 1`] = `
+<div
+  className="relative w-full border-[1px] rounded-md"
+>
+  <input
+    className="p-2 block 
+        w-full 
+        h-full
+        rounded-md text-sm 
+        placeholder:text-xs
+        focus:border-black
+        "
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;

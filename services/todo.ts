@@ -1,4 +1,4 @@
-import callAPI from "@/config/api";
+import callAPI from "../config/api";
 
 export const CREATE_TODOS = async (data: any) => {
   const url = "/api/todo/create";

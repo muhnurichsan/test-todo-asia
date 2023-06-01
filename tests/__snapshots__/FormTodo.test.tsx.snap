@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render component and match snapshot 1`] = `
+<form
+  className="mb-4"
+  onSubmit={[Function]}
+>
+  <h1
+    className="text-black font-bold text-xl text-center"
+  >
+    Todo List
+  </h1>
+  <div
+    className="flex mt-4 gap-5"
+  >
+    <div
+      className="relative w-full border-[1px] rounded-md"
+    >
+      <input
+        className="p-2 block 
+        w-full 
+        h-full
+        rounded-md text-sm 
+        placeholder:text-xs
+        focus:border-black
+        "
+        onChange={[Function]}
+        placeholder="masukkan nama task"
+        type="text"
+      />
+    </div>
+    <button
+      className="
+      py-3 
+      px-3 
+      inline-flex 
+      justify-center 
+      items-center 
+      gap-2 rounded-md
+      border 
+      font-semibold
+    text-white bg-blue-600 hover:bg-blue-500 focus:ring-blue-500
+      ring-offset-white 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-offset-2 
+      transition-all 
+      w-fit
+      "
+      type="submit"
+    >
+      <p
+        className="block text-xs md:text-md"
+      >
+        Add
+      </p>
+    </button>
+    <div
+      className="w-1/2"
+    >
+      <button
+        className="
+      py-3 
+      px-3 
+      inline-flex 
+      justify-center 
+      items-center 
+      gap-2 rounded-md
+      border 
+      font-semibold
+    text-white bg-slate-600 focus:ring-slate-300 hover:bg-slate-500 
+      ring-offset-white 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-offset-2 
+      transition-all 
+      w-fit
+      "
+        onClick={[Function]}
+        type="button"
+      >
+        <p
+          className="block text-xs md:text-md"
+        >
+          Descending Order
+        </p>
+      </button>
+    </div>
+  </div>
+</form>
+`;

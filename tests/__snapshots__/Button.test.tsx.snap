@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render component and match snapshot 1`] = `
+<button
+  className="
+      py-3 
+      px-3 
+      inline-flex 
+      justify-center 
+      items-center 
+      gap-2 rounded-md
+      border 
+      font-semibold
+    text-white bg-blue-600 hover:bg-blue-500 focus:ring-blue-500
+      ring-offset-white 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-offset-2 
+      transition-all 
+      w-fit
+      "
+  type="button"
+>
+  <p
+    className="block text-xs md:text-md"
+  />
+</button>
+`;

@@ -1,0 +1,54 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render component and match snapshot 1`] = `
+<li
+  className="flex justify-between items-center"
+  onClick={[Function]}
+>
+  <div
+    className="flex gap-3"
+  >
+    <input
+      className="w-4"
+      defaultChecked={true}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <p
+      className="text-md font-semibold line-through"
+      onClick={[Function]}
+    >
+      beli gorangan
+    </p>
+  </div>
+  <div>
+    <button
+      className="
+      py-3 
+      px-3 
+      inline-flex 
+      justify-center 
+      items-center 
+      gap-2 rounded-md
+      border 
+      font-semibold
+    text-white bg-red-600 hover:bg-red-500 focus:ring-red-500
+      ring-offset-white 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-offset-2 
+      transition-all 
+      w-fit
+      "
+      onClick={[Function]}
+      type="button"
+    >
+      <p
+        className="block text-xs md:text-md"
+      >
+        Delete
+      </p>
+    </button>
+  </div>
+</li>
+`;

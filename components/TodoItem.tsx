@@ -2,13 +2,13 @@ import { useCallback, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import Checkbox from "./Checkbox";
-import useTodos from "@/hooks/useTodos";
-import { TodoTypes } from "@/services/data-types";
+import useTodos from "../hooks/useTodos";
+import { TodoTypes } from "../services/data-types";
 import {
   DELETE_TASK,
   UPDATE_COMPLETE_TASK,
   UPDATE_TASK,
-} from "@/services/todo";
+} from "../services/todo";
 import { toast } from "react-toastify";
 
 interface TodoListProps {
