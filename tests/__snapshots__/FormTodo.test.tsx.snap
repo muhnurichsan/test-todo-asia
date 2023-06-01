@@ -11,7 +11,7 @@ exports[`should render component and match snapshot 1`] = `
     Todo List
   </h1>
   <div
-    className="flex mt-4 gap-5"
+    className="flex mt-4 gap-2"
   >
     <div
       className="relative w-full border-[1px] rounded-md"
@@ -29,8 +29,11 @@ exports[`should render component and match snapshot 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="
+    <div
+      className="w-1/2"
+    >
+      <button
+        className="
       py-3 
       px-3 
       inline-flex 
@@ -45,18 +48,19 @@ exports[`should render component and match snapshot 1`] = `
       focus:ring-2 
       focus:ring-offset-2 
       transition-all 
-      w-fit
+      w-full
       "
-      type="submit"
-    >
-      <p
-        className="block text-xs md:text-md"
+        type="submit"
       >
-        Add
-      </p>
-    </button>
+        <p
+          className="block text-xs md:text-md"
+        >
+          Add
+        </p>
+      </button>
+    </div>
     <div
-      className="w-1/2"
+      className="w-1/2 flex justify-end"
     >
       <button
         className="
@@ -74,7 +78,7 @@ exports[`should render component and match snapshot 1`] = `
       focus:ring-2 
       focus:ring-offset-2 
       transition-all 
-      w-fit
+      w-full
       "
         onClick={[Function]}
         type="button"
@@ -82,7 +86,7 @@ exports[`should render component and match snapshot 1`] = `
         <p
           className="block text-xs md:text-md"
         >
-          Descending Order
+          Order Todo
         </p>
       </button>
     </div>
