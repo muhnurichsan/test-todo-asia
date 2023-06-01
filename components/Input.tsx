@@ -1,44 +1,38 @@
 interface InputProps {
   value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type: "text" | "email" | "password" | "checkbox";
+  type: "text";
   name?: string;
   placeholder?: string;
-  label: string;
-  required?: boolean;
   onClick?: (e: any) => void;
+  onKeyUp?: (e: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({
   onChange,
   value,
-  label,
   type,
   name,
   placeholder,
-  required,
   onClick,
+  onKeyUp,
 }) => {
   return (
     <div className="relative w-full border-[1px] rounded-md">
-      <label htmlFor={name} className="sr-only">
-        {label}
-      </label>
       <input
-        required={required}
+        onKeyUp={onKeyUp}
         type={type}
         value={value}
         onChange={onChange}
         name={name}
         id={name}
         onClick={onClick}
-        className={`p-3 block 
+        className={`p-2 block 
         w-full 
-        border-gray-200 
+        h-full
         rounded-md text-sm 
-        focus:border-blue-500 
-        focus:ring-blue-500
         placeholder:text-xs
+        focus:border-black
         `}
         placeholder={placeholder}
       />

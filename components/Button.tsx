@@ -1,5 +1,5 @@
 interface ButtonProps {
-  color?: "red" | "yellow" | "grey" | "white";
+  color?: "red" | "grey";
   label?: string;
   type: "submit" | "button";
   onClick?: () => void;
@@ -31,10 +31,6 @@ const Button: React.FC<ButtonProps> = ({
         ? "text-white bg-red-600 hover:bg-red-500 focus:ring-red-500"
         : color === "grey"
         ? "text-white bg-slate-600 focus:ring-slate-300 hover:bg-slate-500 "
-        : color === "yellow"
-        ? " text-yellow-500 bg-yellow-100 hover:bg-yellow-100 focus:ring-yellow-500"
-        : color === "white"
-        ? "bg-transparent text-black"
         : "text-white bg-blue-600 hover:bg-blue-500 focus:ring-blue-500"
     }
       ring-offset-white 
