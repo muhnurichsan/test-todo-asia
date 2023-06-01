@@ -8,17 +8,27 @@ import { mutate } from "swr";
 
 export default function Home() {
   const { data = [], mutate: mutateTodo } = useTodos();
+  const [orderDesc, setOrderDesc] = useState(false);
   const [taskInput, setTaskInput] = useState("");
 
   const handleInputTask = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTaskInput(e.target.value);
   };
 
-  const handleSortDescendingTodo = useCallback(async () => {
+  const handleSortTodo = useCallback(async () => {
     mutate(
       "/api/todo",
       async (todos) => {
-        function compare(a: TodoTypes, b: TodoTypes) {
+        function compareAsc(a: TodoTypes, b: TodoTypes) {
+          if (a.task < b.task) {
+            return -1;
+          }
+          if (a.task > b.task) {
+            return 1;
+          }
+          return 0;
+        }
+        function compareDesc(a: TodoTypes, b: TodoTypes) {
           if (a.task > b.task) {
             return -1;
           }
@@ -28,13 +38,13 @@ export default function Home() {
           return 0;
         }
 
-        const sorted = todos.sort(compare);
-
+        const sorted = todos.sort(orderDesc ? compareAsc : compareDesc);
+        setOrderDesc(!orderDesc);
         return [...sorted];
       },
       { revalidate: false }
     );
-  }, []);
+  }, [orderDesc]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -58,7 +68,7 @@ export default function Home() {
         <FormTodo
           onSubmit={handleSubmit}
           handleInputTask={handleInputTask}
-          handleSortTodo={handleSortDescendingTodo}
+          handleSortTodo={handleSortTodo}
         ></FormTodo>
         <ul className="flex gap-5 flex-col text-center">
           {data.length === 0 && "tidak ada task"}

@@ -15,19 +15,22 @@ const FormTodo: React.FC<FormTodoProps> = ({
   return (
     <form onSubmit={onSubmit} className="mb-4">
       <h1 className="text-black font-bold text-xl text-center">Todo List</h1>
-      <div className="flex mt-4 gap-5">
+      <div className="flex mt-4 gap-2">
         <Input
           placeholder="masukkan nama task"
           type="text"
           onChange={handleInputTask}
         ></Input>
-        <Button type="submit" label="Add"></Button>
         <div className="w-1/2">
+          <Button type="submit" label="Add" fullWidth></Button>
+        </div>
+        <div className="w-1/2 flex justify-end">
           <Button
             type="button"
-            label="Descending Order"
+            label="Order Todo"
             color="grey"
             onClick={handleSortTodo}
+            fullWidth
           ></Button>
         </div>
       </div>

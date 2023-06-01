@@ -1,5 +1,13 @@
 import callAPI from "../config/api";
 
+export const GET_TODOS = async () => {
+  const url = "/api/todo";
+  return callAPI({
+    url,
+    method: "get",
+  });
+};
+
 export const CREATE_TODOS = async (data: any) => {
   const url = "/api/todo/create";
   return callAPI({
