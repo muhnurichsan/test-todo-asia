@@ -1,8 +1,9 @@
 import { FormTodo, TodoItem } from "@/components";
 import useTodos from "@/hooks/useTodos";
 import { TodoTypes } from "@/services/data-types";
-import axios from "axios";
+import { CREATE_TODOS } from "@/services/todo";
 import { useCallback, useState } from "react";
+import { toast } from "react-toastify";
 import { mutate } from "swr";
 
 export default function Home() {
@@ -38,14 +39,14 @@ export default function Home() {
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-
-      try {
-        await axios.post("/api/todo/create", {
-          task: taskInput,
-        });
+      const result = await CREATE_TODOS({
+        task: taskInput,
+      });
+      if (result?.error) {
+        toast.error(result.message);
+      } else {
+        toast.success("berhasil menambah task");
         mutateTodo();
-      } catch (error) {
-        console.log(error);
       }
     },
     [taskInput, mutateTodo]

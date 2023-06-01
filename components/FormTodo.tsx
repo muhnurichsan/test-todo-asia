@@ -14,7 +14,7 @@ const FormTodo: React.FC<FormTodoProps> = ({
 }) => {
   return (
     <form onSubmit={onSubmit} className="mb-4">
-      <h1 className="text-black font-bold text-xl">Todo List</h1>
+      <h1 className="text-black font-bold text-xl text-center">Todo List</h1>
       <div className="flex mt-4 gap-5">
         <Input
           placeholder="masukkan nama task"

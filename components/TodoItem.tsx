@@ -2,9 +2,14 @@ import { useCallback, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import Checkbox from "./Checkbox";
-import axios from "axios";
 import useTodos from "@/hooks/useTodos";
 import { TodoTypes } from "@/services/data-types";
+import {
+  DELETE_TASK,
+  UPDATE_COMPLETE_TASK,
+  UPDATE_TASK,
+} from "@/services/todo";
+import { toast } from "react-toastify";
 
 interface TodoListProps {
   data: TodoTypes;
@@ -15,43 +20,43 @@ const TodoList: React.FC<TodoListProps> = ({ data }) => {
   const [taskInput, setTaskInput] = useState(data.task);
   const [taskClicked, setTaskClicked] = useState(false);
 
-  const handleUpdateTask = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      e.stopPropagation();
+  const handleUpdateTask = useCallback(async () => {
+    const result = await UPDATE_TASK(data.id, {
+      task: taskInput,
+    });
+    if (result?.error) {
+      toast.error(result.message);
+    } else {
+      mutateTodo();
+    }
+  }, [data.id, taskInput, mutateTodo]);
 
-      try {
-        await axios.put(`/api/todo/edit/${data.id}`, {
-          task: taskInput,
-        });
-      } catch (error) {
-        console.log(error);
-      } finally {
-        mutateTodo();
-      }
-    },
-    [data.id, taskInput, mutateTodo]
-  );
-
-  const handleDoneTodo = useCallback(
+  const handleCompleteTask = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
-      try {
-        await axios.put(`/api/todo/edit/${data.id}`, {
-          done: e.target.checked,
-        });
+      const result = await UPDATE_COMPLETE_TASK(data.id, {
+        done: e.target.checked,
+      });
+      if (result?.error) {
+        toast.error(result.message);
+      } else {
+        toast.success(
+          `berhasil merubah task menjadi ${
+            e.target.checked === true ? "selesai" : "belum selesai"
+          }`
+        );
         mutateTodo();
-      } catch (error) {
-        console.log(error);
       }
     },
     [data.id, mutateTodo]
   );
 
   const handleDeleteTodo = useCallback(async () => {
-    try {
-      await axios.delete(`/api/todo/delete/${data.id}`);
+    const result = await DELETE_TASK(data.id);
+    if (result?.error) {
+      toast.error(result.message);
+    } else {
+      toast.success("berhasil menghapus task");
       mutateTodo();
-    } catch (error) {
-      console.log(error);
     }
   }, [data.id, mutateTodo]);
 
@@ -63,7 +68,7 @@ const TodoList: React.FC<TodoListProps> = ({ data }) => {
       className="flex justify-between items-center"
     >
       <div className="flex gap-3">
-        <Checkbox checked={data.done} onChange={handleDoneTodo}></Checkbox>
+        <Checkbox checked={data.done} onChange={handleCompleteTask}></Checkbox>
         {taskClicked ? (
           <Input
             type="text"
