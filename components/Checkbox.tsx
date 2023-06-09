@@ -7,7 +7,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ checked, onChange }) => {
   return (
     <input
       type="checkbox"
-      defaultChecked={checked}
+      checked={checked}
       onChange={onChange}
       className="w-4"
     />
